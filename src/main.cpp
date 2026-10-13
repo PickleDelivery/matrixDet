@@ -26,11 +26,15 @@ int main(){
         for (int j = 0; j < matrix[i].size(); j++){
             cout << "Enter element a[" << i+1 << "][" << j+1 << "] -> ";
             cin >> matrix[i][j];
-            cout << "\n";
         }
     }
 
+    cout << "\n";
+
     printMatrix(matrix, precision);
+
+    cout << "\n";
+
 
     cout << "Determinant is: " << fixed << setprecision(precision) << getDeterminant(matrix);
 

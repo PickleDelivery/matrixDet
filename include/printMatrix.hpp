@@ -9,8 +9,8 @@ int printMatrix(vector<vector<float>>& matrix, int precision = 2){
     for (int i = 0; i < matrix.size(); i++){
         cout << "{ ";
         for (int j = 0; j< matrix[i].size(); j++){
-            cout << fixed << setprecision(precision) << matrix[i][j];
-            for (int spaces = 0; spaces <= precision; spaces++) cout << " ";
+            cout << fixed << setprecision(precision) << matrix[i][j] << " ";
+            for (int spaces = 0; spaces <= precision/2; spaces++) cout << " ";
         }
         cout << "}\n";
     }
