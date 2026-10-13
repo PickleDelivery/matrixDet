@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int printMatrix(vector<vector<float>>& matrix, int precision = 4){
+int printMatrix(vector<vector<float>>& matrix, int precision = 2){
 
     for (int i = 0; i < matrix.size(); i++){
         cout << "{ ";
