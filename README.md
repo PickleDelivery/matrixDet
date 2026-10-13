@@ -1,6 +1,6 @@
 # Matrix Determinant Calculator
 
-This simple CLI program implements a function that accepts a 2-dimensional array of numbers as a mathematical square matrix, and returns its determinant value.
+This simple CLI program implements a function that accepts a 2-dimensional vector of numbers as a mathematical square matrix, and returns its determinant value.
 
 ### Why did I make this
 
