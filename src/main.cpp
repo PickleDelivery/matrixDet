@@ -35,7 +35,6 @@ int main(){
 
     cout << "\n";
 
-
     cout << "Determinant is: " << fixed << setprecision(precision) << getDeterminant(matrix);
 
     return 0;
