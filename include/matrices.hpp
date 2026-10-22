@@ -41,11 +41,11 @@ public:
         if (rows == cols && rows == 1){
             return data.at(index(0, 0));
         }
-        /*
+        
         if (rows == cols && rows == 2){
             return data.at(index(0, 0)) * data.at(index(1, 1)) - data.at(index(0, 1)) * data.at(index(1, 0));
         }
-        */
+        
         T determinant = 0.0;
         for (size_t ignored_major_column = 0; ignored_major_column < cols; ignored_major_column++){
             FlatMatrix<T> minor_matrix(rows-1, cols-1);
