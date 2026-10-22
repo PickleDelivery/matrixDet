@@ -10,12 +10,6 @@ This simple CLI program implements a function that accepts a 2-dimensional vecto
 
 Learning basic C++ programming and math in general.
 
-### Compile command
-
-```
-g++ (cat compile_flags.txt) src/main.cpp -o build/matrixDet
-```
-
 ### How I made this
 
 All the helper functions (printMatrix, getDeterminant and isSquareMatrix) are all entirely hand-written, by hand. I used AI to write testing/main.cpp as a unit test of the helper functions.
