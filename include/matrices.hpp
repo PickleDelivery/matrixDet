@@ -71,7 +71,27 @@ public:
 
         return determinant;
     }
+
+    void transpose_self() {
+        if (isSquare()){
+            for (size_t r = 0; r < rows; r++)
+                for (size_t c = r+1; c < cols; c++)
+                    std::swap((* this)(r,c), (* this)(c,r));
+        } else {
+            *this = transpose(*this);
+        }
+    }
+
 };
+
+template<std::floating_point T>
+FlatMatrix<T> transpose(FlatMatrix<T>& matrix) {
+    FlatMatrix<T> newMatix(matrix.colCount(), matrix.rowCount());
+    for (size_t r = 0; r < matrix.rowCount(); r++)
+        for (size_t c = 0; c < matrix.colCount(); c++)
+            newMatix(c,r) = matrix(r,c);
+    return newMatix;
+}
 
 template<std::floating_point T>
 std::ostream& operator<<(
