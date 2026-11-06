@@ -7,7 +7,7 @@ using namespace std;
 int precision = 2; //for output
 
 int main(){
-    cout << "Program will calculate determinant of a square matrix.\n";
+    cout << fixed << setprecision(precision) << "Program will calculate determinant of a square matrix.\n";
     cout << "Please enter matrix size (1 positive int number) -> ";
     size_t size;
 
@@ -24,13 +24,17 @@ int main(){
         }
     }
 
+    cout << "\nYour matrix is:" << endl;
+
+    cout << matrix << endl;
+
+    cout << "Determinant is: " << matrix.determinant() << endl;;
+
+    cout << "\nYour matrix (transposed) is:" << endl;
+
+    cout << transpose(matrix) << endl;
+
     cout << "\n";
-
-    cout << matrix;
-
-    cout << "\n";
-
-    cout << "Determinant is: " << fixed << setprecision(precision) << matrix.determinant();
 
     return 0;
 
