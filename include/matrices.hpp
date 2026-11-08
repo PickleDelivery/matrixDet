@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include <vector>
 #include <iostream>
+#include <string>
+#include <format>
 
 template<std::floating_point T>
 class FlatMatrix {
@@ -82,6 +84,27 @@ public:
         }
     }
 
+    std::string toEqSystemForm() {
+        if (cols < 2) {
+            throw std::invalid_argument("Matrix must have at least 2 columns to convert to equation system form");
+        }
+        if (cols > 10) {
+            throw std::invalid_argument("Matrix must have at most 10 columns to convert to equation system form");
+        }
+        char variable_names[] = {'x', 'y', 'z', 'w', 'v', 'u', 't', 's', 'r', 'q'};
+        std::string output = "";
+        for (size_t r = 0; r < rows; r++){
+            for (size_t c = 0; c < cols-1; c++){
+                if ((*this)(r,c) != 0){
+                    if ((*this)(r,c) >0 && c != 0) output += "+";
+                    output += std::format("{}",(*this)(r,c)) + variable_names[c];
+                }
+            }
+            output += "=" + std::format("{}", (*this)(r, cols-1)) + "\n";
+        }
+        return output;
+    }
+
 };
 
 template<std::floating_point T>
@@ -98,10 +121,25 @@ std::ostream& operator<<(
     std::ostream& os,
     const FlatMatrix<T>& matrix
 ) {
+    std::vector<size_t> colWidths(matrix.colCount(), 0); //each columnt with is determined by its longest element
+
+    for (size_t c = 0; c < matrix.colCount(); c++){
+        for (size_t r = 0; r < matrix.rowCount(); r++){
+            std::string elementStr = std::format("{}", matrix(r, c));
+            if (elementStr.length() > colWidths[c]){
+                colWidths[c] = elementStr.length();
+            }
+        }
+    }
+
     for (size_t r = 0; r < matrix.rowCount(); r++){
         os << "| ";
         for (size_t c = 0; c < matrix.colCount(); c++) {
-            os << matrix(r, c) << ' ';
+            os << matrix(r, c);
+            for (size_t i = 0; i < colWidths[c] - std::format("{}", matrix(r, c)).length(); i++){
+                os << ' ';
+            }
+            os << "  ";
         }
         os << "|\n";
     }

@@ -1,13 +1,11 @@
 #include "matrices.hpp"
 #include <iostream>
-#include <iomanip>
+//#include <string>
 
 using namespace std;
 
-int precision = 2; //for output
-
 int main(){
-    cout << fixed << setprecision(precision) << "Program will calculate determinant of a square matrix.\n";
+    cout << "Program will calculate determinant of a square matrix.\n";
     cout << "Please enter matrix size (1 positive int number) -> ";
     size_t size;
 
@@ -24,17 +22,12 @@ int main(){
         }
     }
 
-    cout << "\nYour matrix is:" << endl;
-
-    cout << matrix << endl;
+    cout << "\nYour matrix is:\n" << matrix << endl;
+    cout << "Your matrix (transposed) is:\n" << transpose(matrix) << endl;
 
     cout << "Determinant is: " << matrix.determinant() << endl;;
 
-    cout << "\nYour matrix (transposed) is:" << endl;
-
-    cout << transpose(matrix) << endl;
-
-    cout << "\n";
+    cout << "Your matrix in equation system form is:\n" << matrix.toEqSystemForm() << endl;
 
     return 0;
 
