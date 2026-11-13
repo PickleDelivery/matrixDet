@@ -35,6 +35,7 @@ public:
     [[nodiscard]]
     bool isSquare() const {return rows==cols; }
 
+    [[nodiscard]]
     T determinant() const {
         if (!isSquare()) {
             throw std::invalid_argument("Determinant is only defined for square matrices");
@@ -84,7 +85,8 @@ public:
         }
     }
 
-    std::string toEqSystemForm() {
+    [[nodiscard]]
+    std::string toEqSystemForm() const {
         if (cols < 2) {
             throw std::invalid_argument("Matrix must have at least 2 columns to convert to equation system form");
         }
@@ -109,11 +111,11 @@ public:
 
 template<std::floating_point T>
 FlatMatrix<T> transpose(FlatMatrix<T>& matrix) {
-    FlatMatrix<T> newMatix(matrix.colCount(), matrix.rowCount());
+    FlatMatrix<T> newMatrix(matrix.colCount(), matrix.rowCount());
     for (size_t r = 0; r < matrix.rowCount(); r++)
         for (size_t c = 0; c < matrix.colCount(); c++)
-            newMatix(c,r) = matrix(r,c);
-    return newMatix;
+            newMatrix(c,r) = matrix(r,c);
+    return newMatrix;
 }
 
 template<std::floating_point T>
